@@ -35,6 +35,8 @@ dbt-ai-course/
 
 ## Quick Start (PowerShell)
 
+For a dedicated setup walkthrough, see [getting started.md](getting%20started.md).
+
 ```powershell
 cd "dbt-ai-course"
 python -m venv .venv
