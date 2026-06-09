@@ -1,0 +1,6 @@
+subscription_id,account_id,plan_id,start_date,end_date,status
+10001,1,20,2025-03-01,,active
+10002,2,10,2025-03-10,2025-05-15,cancelled
+10003,3,30,2025-04-01,,active
+10004,4,20,2025-04-15,,active
+10005,5,10,2025-05-01,,trial

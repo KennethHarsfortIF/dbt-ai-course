@@ -1,0 +1,7 @@
+customer_id,first_name,last_name,email,signup_date,country,segment
+1,Ada,Lovelace,ada@example.com,2025-01-05,UK,enterprise
+2,Grace,Hopper,grace@example.com,2025-01-15,US,mid_market
+3,Alan,Turing,alan@example.com,2025-02-10,UK,enterprise
+4,Katherine,Johnson,katherine@example.com,2025-02-21,US,smb
+5,Dorothy,Vaughan,dorothy@example.com,2025-03-08,US,smb
+6,Tim,Berners-Lee,tim@example.com,2025-03-14,UK,mid_market

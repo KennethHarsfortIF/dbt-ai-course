@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension enriched with order activity and simple value segmentation."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: value_tier
+        tests:
+          - accepted_values:
+              values: ['high_value', 'medium_value', 'low_value']
+
+  - name: fct_orders
+    description: "Order-level fact model joined with payment status."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+      - name: is_successful_order
+        description: "True when order is completed and payment is paid."
+
+  - name: rpt_customer_ltv
+    description: "Simple reporting model to discuss CLV/LTV concepts in class."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: completed_revenue
+        tests:
+          - not_null
+
+  - name: rpt_saas_mrr
+    description: "SaaS reporting model summarizing MRR by region and subscription status."
+    columns:
+      - name: region
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+      - name: total_mrr_usd
+        tests:
+          - not_null

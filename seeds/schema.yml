@@ -1,0 +1,62 @@
+version: 2
+
+seeds:
+  - name: raw_customers
+    description: "Course seed containing customer master records."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+
+  - name: raw_orders
+    description: "Course seed containing orders with status and amount."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: raw_payments
+    description: "Course seed containing payment events by order."
+    columns:
+      - name: payment_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - not_null
+
+  - name: raw_accounts
+    description: "SaaS account seed for transfer-learning exercises."
+    columns:
+      - name: account_id
+        tests:
+          - not_null
+          - unique
+
+  - name: raw_plans
+    description: "SaaS plan catalog seed."
+    columns:
+      - name: plan_id
+        tests:
+          - not_null
+          - unique
+
+  - name: raw_subscriptions
+    description: "SaaS subscriptions with lifecycle status."
+    columns:
+      - name: subscription_id
+        tests:
+          - not_null
+          - unique
+      - name: account_id
+        tests:
+          - not_null
+      - name: plan_id
+        tests:
+          - not_null

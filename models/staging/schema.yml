@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned customer dimension staging model."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: email
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "Cleaned order facts staging model."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ['completed', 'returned', 'pending', 'cancelled']
+
+  - name: stg_payments
+    description: "Cleaned payments staging model."
+    columns:
+      - name: payment_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+
+  - name: stg_accounts
+    description: "Cleaned SaaS account staging model."
+    columns:
+      - name: account_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_plans
+    description: "Cleaned SaaS plan catalog staging model."
+    columns:
+      - name: plan_id
+        tests:
+          - not_null
+          - unique
+      - name: billing_cycle
+        tests:
+          - accepted_values:
+              values: ['monthly']
+
+  - name: stg_subscriptions
+    description: "Cleaned SaaS subscription staging model."
+    columns:
+      - name: subscription_id
+        tests:
+          - not_null
+          - unique
+      - name: account_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_accounts')
+              field: account_id
+      - name: plan_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_plans')
+              field: plan_id
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['active', 'cancelled', 'trial']

@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: int_customer_orders
+    description: "Customer-level aggregation of order history used by downstream marts."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: completed_revenue
+        tests:
+          - not_null
+
+  - name: int_account_subscriptions
+    description: "Subscription detail joined with plan pricing and account attributes."
+    columns:
+      - name: subscription_id
+        tests:
+          - not_null
+          - unique
+      - name: account_id
+        tests:
+          - not_null
+      - name: mrr_usd
+        tests:
+          - not_null
