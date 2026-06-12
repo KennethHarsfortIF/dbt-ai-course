@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: rpt_country_daily_revenue
+    description: "Daily successful order performance by country at the order_date and country grain."
+    columns:
+      - name: order_date
+        tests:
+          - not_null
+      - name: country
+        tests:
+          - not_null
+      - name: successful_revenue
+        tests:
+          - not_null
