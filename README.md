@@ -36,7 +36,11 @@ dbt-ai-course/
 ## Quick Start (PowerShell)
 
 ```powershell
+# If you are in the folder that contains this checkout:
 cd "dbt-ai-course"
+
+# If you are already inside dbt-ai-course, skip the cd line above.
+
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -49,6 +53,47 @@ dbt seed --profiles-dir .
 dbt run --profiles-dir .
 dbt test --profiles-dir .
 dbt docs generate --profiles-dir .
+```
+
+If you are already inside the project folder, use the project-local environment directly:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+dbt seed --profiles-dir .
+```
+
+Do not use any other `.venv` for this project. Use the `.venv` created inside the `dbt-ai-course` folder.
+
+## Query DuckDB in CLI
+
+After installing requirements and activating the project `.venv`, you can query the local DuckDB file directly:
+
+```powershell
+duckdb "ai_course.duckdb"
+```
+
+Inside the DuckDB prompt:
+
+```sql
+SHOW TABLES;
+SELECT * FROM main.dim_customers LIMIT 5;
+.quit
+```
+
+Example join query (orders with customer attributes):
+
+```sql
+SELECT
+  o.order_id,
+  o.order_date,
+  o.order_amount,
+  c.email,
+  c.value_tier
+FROM main.fct_orders o
+LEFT JOIN main.dim_customers c
+  ON o.customer_id = c.customer_id
+ORDER BY o.order_date DESC
+LIMIT 10;
 ```
 
 ## Suggested Teaching Flow
@@ -94,7 +139,7 @@ Marts:
 
 ## Environment Note
 
-If your class runs on Python 3.14, keep the `mashumaro==3.17` pin in `requirements.txt`.
+The verified setup for this project is the project-local `.venv` inside the `dbt-ai-course` folder.
 
 ## Notes
 

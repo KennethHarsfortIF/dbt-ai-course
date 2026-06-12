@@ -1,0 +1,23 @@
+erDiagram
+  int_customer_orders {
+    int    customer_id PK
+    string email
+    string country
+    string segment
+    int    total_orders
+    float  completed_revenue
+    date   last_order_date
+  }
+  int_account_subscriptions {
+    int    subscription_id PK
+    int    account_id FK
+    string account_name
+    string region
+    int    plan_id FK
+    string plan_name
+    float  price_usd
+    string status
+    date   start_date
+    date   end_date
+    float  mrr_usd
+  }

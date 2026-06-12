@@ -1,0 +1,48 @@
+erDiagram
+  dim_customers {
+    int    customer_id PK
+    string email
+    string country
+    string segment
+    int    total_orders
+    float  completed_revenue
+    date   last_order_date
+    string value_tier
+  }
+  fct_orders {
+    int       order_id PK
+    int       customer_id FK
+    date      order_date
+    string    order_status
+    float     order_amount
+    string    payment_method
+    string    payment_status
+    timestamp processed_at
+    boolean   is_successful_order
+  }
+  rpt_customer_ltv {
+    int    customer_id PK
+    string email
+    string country
+    string segment
+    string value_tier
+    int    total_orders
+    float  completed_revenue
+    float  avg_revenue_per_order
+  }
+  rpt_saas_mrr {
+    string region PK
+    string status PK
+    int    subscriptions
+    float  total_mrr_usd
+    float  avg_mrr_usd
+  }
+  example_generated_model {
+    date  order_date PK
+    int   order_count
+    float successful_revenue
+  }
+
+  dim_customers   ||--o{ fct_orders            : "customer_id [A: semantic join key]"
+  dim_customers   ||--|| rpt_customer_ltv       : "customer_id [V: ref + unique test]"
+  example_generated_model ||--o{ fct_orders      : "order_date [V: SQL aggregation]"

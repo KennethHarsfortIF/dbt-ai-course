@@ -1,0 +1,49 @@
+erDiagram
+  stg_customers {
+    int    customer_id PK
+    string email
+    string first_name
+    string last_name
+    date   signup_date
+    string country
+    string segment
+  }
+  stg_orders {
+    int    order_id PK
+    int    customer_id FK
+    date   order_date
+    string order_status
+    float  order_amount
+  }
+  stg_payments {
+    int       payment_id PK
+    int       order_id FK
+    string    payment_method
+    string    payment_status
+    timestamp processed_at
+  }
+  stg_accounts {
+    int    account_id PK
+    string account_name
+    string region
+    date   created_date
+  }
+  stg_plans {
+    int    plan_id PK
+    string plan_name
+    string billing_cycle
+    float  price_usd
+  }
+  stg_subscriptions {
+    int    subscription_id PK
+    int    account_id FK
+    int    plan_id FK
+    date   start_date
+    date   end_date
+    string status
+  }
+
+  stg_customers ||--o{ stg_orders : "customer_id [V: relationships test]"
+  stg_orders    ||--o{ stg_payments : "order_id [V: relationships test]"
+  stg_accounts  ||--o{ stg_subscriptions : "account_id [V: relationships test]"
+  stg_plans     ||--o{ stg_subscriptions : "plan_id [V: relationships test]"

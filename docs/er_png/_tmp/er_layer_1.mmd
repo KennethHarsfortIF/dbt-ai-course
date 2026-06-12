@@ -1,0 +1,49 @@
+erDiagram
+  raw_customers {
+    int    customer_id PK
+    string first_name
+    string last_name
+    string email
+    date   signup_date
+    string country
+    string segment
+  }
+  raw_orders {
+    int    order_id PK
+    int    customer_id FK
+    date   order_date
+    string order_status
+    float  order_amount
+  }
+  raw_payments {
+    int       payment_id PK
+    int       order_id FK
+    string    payment_method
+    string    payment_status
+    timestamp processed_at
+  }
+  raw_accounts {
+    int    account_id PK
+    string account_name
+    string region
+    date   created_date
+  }
+  raw_plans {
+    int    plan_id PK
+    string plan_name
+    string billing_cycle
+    float  price_usd
+  }
+  raw_subscriptions {
+    int    subscription_id PK
+    int    account_id FK
+    int    plan_id FK
+    date   start_date
+    date   end_date
+    string status
+  }
+
+  raw_customers ||--o{ raw_orders : "customer_id [A]"
+  raw_orders    ||--o{ raw_payments : "order_id [A]"
+  raw_accounts  ||--o{ raw_subscriptions : "account_id [A]"
+  raw_plans     ||--o{ raw_subscriptions : "plan_id [A]"
