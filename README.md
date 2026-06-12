@@ -35,6 +35,8 @@ dbt-ai-course/
 
 ## Quick Start (PowerShell)
 
+For a dedicated setup walkthrough, see [getting started.md](getting%20started.md).
+
 ```powershell
 # If you are in the folder that contains this checkout:
 cd "dbt-ai-course"
