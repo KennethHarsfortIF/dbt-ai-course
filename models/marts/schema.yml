@@ -14,17 +14,31 @@ models:
               values: ['high_value', 'medium_value', 'low_value']
 
   - name: fct_orders
-    description: "Order-level fact model joined with payment status."
+    description: "Fact table at order-payment join grain. Combines cleaned orders with payment attributes using a left join on order_id. One order can appear multiple times if multiple payment records exist for that order."
     columns:
       - name: order_id
+        description: "Order identifier from stg_orders. Expected to be unique in this mart; duplicates indicate multiple payment rows per order or join-grain drift."
         tests:
           - not_null
           - unique
       - name: customer_id
+        description: "Customer identifier associated with the order."
         tests:
           - not_null
+      - name: order_date
+        description: "Date the order was placed."
+      - name: order_status
+        description: "Normalized order lifecycle status from stg_orders."
+      - name: order_amount
+        description: "Order amount after staging type-casting."
+      - name: payment_method
+        description: "Normalized payment method from stg_payments; null when no matching payment row exists."
+      - name: payment_status
+        description: "Normalized payment status from stg_payments; null when no matching payment row exists."
+      - name: processed_at
+        description: "Payment processing timestamp from stg_payments."
       - name: is_successful_order
-        description: "True when order is completed and payment is paid."
+        description: "Boolean flag set to true only when order_status = 'completed' and payment_status = 'paid'; otherwise false, including orders with no matching payment row."
 
   - name: rpt_customer_ltv
     description: "Simple reporting model to discuss CLV/LTV concepts in class."
