@@ -6,6 +6,7 @@ profile: "ai_course_dbt"
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
+docs-paths: ["docs"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
