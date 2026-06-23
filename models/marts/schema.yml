@@ -14,7 +14,7 @@ models:
               values: ['high_value', 'medium_value', 'low_value']
 
   - name: fct_orders
-    description: "Fact table at order-payment join grain. Combines cleaned orders with payment attributes using a left join on order_id. One order can appear multiple times if multiple payment records exist for that order."
+    description: "{{ doc('fct_orders') }}"
     columns:
       - name: order_id
         description: "Order identifier from stg_orders. Expected to be unique in this mart; duplicates indicate multiple payment rows per order or join-grain drift."

@@ -97,3 +97,30 @@ Important gap:
     - name: is_successful_order
       description: "Boolean flag set to true only when order_status = 'completed' and payment_status = 'paid'; otherwise false, including orders with no matching payment row."
 
+## User
+Save the documentation in models/marts
+
+## Assistant
+Saved. I updated the marts documentation for fct_orders in models/marts/schema.yml with:
+- A detailed model-level description
+- Column descriptions for all selected fields
+- Precise logic text for is_successful_order
+
+If you want, I can also add matching documentation for models/marts/fct_orders.sql as a companion docs block in your project docs site.
+
+## User
+do that.
+
+## Assistant
+Done. I added the companion dbt docs block and connected it to the marts model description.
+
+Updated files:
+- models/marts/schema.yml: switched fct_orders description to use the docs block via {{ doc('fct_orders') }}
+- docs/fct_orders.md: added a full {% docs fct_orders %} block with:
+  - business context
+  - exact grain behavior
+  - precise is_successful_order logic
+  - join-duplication risk note if payment grain changes
+
+If you want, I can do the same pattern for models/marts/dim_customers.sql and models/marts/rpt_customer_ltv.sql so all marts are consistent.
+
