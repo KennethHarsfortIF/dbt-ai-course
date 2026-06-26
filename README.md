@@ -114,6 +114,14 @@ Use the templates in:
 - `ai_prompts/03_suggest_improvements.md`
 - `ai_prompts/context_pack.md`
 
+## Documentation For Model Work
+
+Use these files when editing or reviewing marts:
+
+- [AGENTS.md](AGENTS.md)
+- [docs/business_glossary.md](docs/business_glossary.md)
+- [docs/mart_model_contracts.md](docs/mart_model_contracts.md)
+
 ## Classroom Exercises
 
 Use these ready-made exercises and answer keys:
