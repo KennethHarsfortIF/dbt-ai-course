@@ -2,31 +2,13 @@
 
 ## Objective
 
-Use AI to design and implement targeted dbt tests.
+Practice identifying what could go wrong in a dbt model and asking AI to help protect against it.
 
-## Task
+## Your Starting Point
 
-Ask AI to add tests for one specific model and one specific risk in the project.
+Look at `stg_subscriptions` and its `status` column. Think about what depends on that column being correct downstream. That is your problem area.
 
-Choose one of these example directions:
-
-- Protect `stg_subscriptions` against invalid `status` values or missing keys
-- Protect `fct_orders` against order and payment logic issues
-- Protect `rpt_saas_mrr` against null or inconsistent reporting dimensions
-
-Your prompt should ask AI to work with:
-
-- `models/staging/schema.yml`
-- `models/marts/schema.yml`
-- `tests/`
-
-Requirements:
-
-- Name the chosen model and the exact business rule or risk to protect
-- Propose specific `schema.yml` test additions for that risk
-- Add one new singular SQL test
-- Explain why each proposed test matters
-- Keep the scope narrow and practical for this demo project
+From there, figure out what question you want AI to help you answer about protecting that data — and write a prompt that reflects your own understanding of the risk, not a generic request for more tests.
 
 ## Submission Checklist
 

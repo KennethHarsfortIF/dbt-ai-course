@@ -80,7 +80,7 @@ For Activities 4 and 5, the new prompt files are facilitator examples only, not 
 
 ### Activity 4: Design Tests
 
-- Example prompts available: Example Prompt A or B in ai_prompts/04_design_tests.md
+- Example prompt available in ai_prompts/04_design_tests.md
 - Goal: learners write their own AI prompt for one model and one clear risk.
 - Suggested scope:
   - models/staging/schema.yml
@@ -98,7 +98,7 @@ For Activities 4 and 5, the new prompt files are facilitator examples only, not 
 
 ### Activity 5: Create Analysis
 
-- Example prompts available: Example Prompt A or B in ai_prompts/05_create_analysis.md
+- Example prompt available in ai_prompts/05_create_analysis.md
 - Goal: learners write their own AI prompt to produce a stakeholder-ready query in analyses/.
 - Suggested scope:
   - analyses/

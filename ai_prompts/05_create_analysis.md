@@ -44,45 +44,6 @@ Return exactly:
 3) A short interpretation section
 ```
 
-## Example Prompt B: Account Region MRR Analysis
-
-```text
-You are helping with a dbt project that runs on DuckDB.
-
-Create this new analysis file:
-- analyses/account_region_mrr_summary.sql
-
-Use these models:
-- int_account_subscriptions
-- rpt_saas_mrr
-
-Business question:
-- Which account regions have the highest active MRR and subscription counts?
-
-Required output grain:
-- One row per region.
-
-Required columns:
-- region
-- active_subscriptions
-- total_active_mrr_usd
-- avg_active_mrr_usd
-- active_accounts
-
-Rules:
-1) Use ref() for all model dependencies.
-2) Only active subscriptions should contribute to the active metrics.
-3) active_accounts should count distinct account_id.
-4) Sort by total_active_mrr_usd descending.
-5) Keep SQL compatible with DuckDB.
-
-Also include a short interpretation section that explains what patterns a stakeholder should look for in the result.
-
-Return exactly:
-1) Full SQL for analyses/account_region_mrr_summary.sql
-2) A short assumptions section
-3) A short interpretation section
-```
 
 ## Expected High-Quality Answer Example (Prompt A)
 
@@ -108,31 +69,4 @@ Interpretation:
 - Returns one row per customer_id instead of country + segment.
 - Omits sorting, assumptions, or interpretation.
 - Mixes total orders with revenue without defining the metric clearly.
-```
-
-## Expected High-Quality Answer Example (Prompt B)
-
-```text
-SQL:
-- Uses ref('int_account_subscriptions') and optionally cross-checks logic against rpt_saas_mrr.
-- Filters or conditions metrics so only active subscriptions contribute.
-- Groups by region.
-- Calculates active_subscriptions, total_active_mrr_usd, avg_active_mrr_usd, and active_accounts.
-- Sorts by total_active_mrr_usd descending.
-
-Assumptions:
-- region represents account geography such as NA, EMEA, and APAC.
-- mrr_usd in int_account_subscriptions is already zero for non-active statuses.
-
-Interpretation:
-- Helps a stakeholder compare where subscription revenue is concentrated and whether some regions have many accounts but lower average MRR.
-```
-
-## Common Bad Answer Example (Prompt B)
-
-```text
-- Calls the output SaaS growth analysis without using any growth logic.
-- Includes cancelled or trial subscriptions in active metrics.
-- Uses a customer-grain result instead of one row per region.
-- Gives no stakeholder-facing interpretation.
 ```

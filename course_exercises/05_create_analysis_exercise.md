@@ -2,25 +2,13 @@
 
 ## Objective
 
-Use AI to create a stakeholder-facing analysis query.
+Practice turning a business question into an AI-generated analysis query that a stakeholder could actually use.
 
-## Task
+## Your Starting Point
 
-Ask AI to create a new file in `analyses/` that answers one business question using existing dbt models.
+Look at `dim_customers` and think about what a sales manager would want to know about revenue across different customer types. There is no single right answer — but before you write anything, decide what you actually want to find out and who would use the result.
 
-Possible directions:
-
-- Which customer segments drive the most completed revenue by country?
-- Which SaaS regions have the highest active MRR and subscription counts?
-- Which customers or accounts look like outliers worth investigating?
-
-Your prompt should require:
-
-1. A clear business question
-2. The exact output grain
-3. The models to use with `ref()`
-4. Sorting or filtering that makes the result useful
-5. A short interpretation or assumptions section
+Write a prompt that comes from that decision, not from a template.
 
 ## Submission Checklist
 
