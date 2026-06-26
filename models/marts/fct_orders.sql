@@ -3,6 +3,24 @@ with orders as (
 ),
 payments as (
     select * from {{ ref('stg_payments') }}
+),
+payments_ranked as (
+    select
+        *,
+        row_number() over (
+            partition by order_id
+            order by processed_at desc, payment_id desc
+        ) as payment_rank
+    from payments
+),
+payments_deduped as (
+    select
+        order_id,
+        payment_method,
+        payment_status,
+        processed_at
+    from payments_ranked
+    where payment_rank = 1
 )
 
 select
@@ -19,5 +37,5 @@ select
         else false
     end as is_successful_order
 from orders o
-left join payments p
+left join payments_deduped p
     on o.order_id = p.order_id
