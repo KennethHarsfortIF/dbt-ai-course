@@ -10,8 +10,8 @@ For Activities 4 and 5, the new prompt files are facilitator examples only, not 
   - ai_prompts/01_create_model.md
   - ai_prompts/02_explain_code.md
   - ai_prompts/03_suggest_improvements.md
-  - ai_prompts/04_design_tests.md
-  - ai_prompts/05_create_analysis.md
+  - ai_prompts/04_extract_data.md
+  - ai_prompts/05_documentation.md
 - Instruct learners to paste context first, then one full prompt block for Activities 1-3.
 - For Activities 4-5, tell learners to write their own prompt from the exercise brief and use the example prompts as inspiration if they get stuck.
 - Remind them: request full file content so outputs are copy-paste ready.
@@ -78,37 +78,37 @@ For Activities 4 and 5, the new prompt files are facilitator examples only, not 
 
 ## Additional Hands-On Options (15 minutes each)
 
-### Activity 4: Design Tests
+### Activity 4: Extract Data
 
-- Example prompt available in ai_prompts/04_design_tests.md
-- Goal: learners write their own AI prompt for one model and one clear risk.
+- Example prompt available in ai_prompts/04_extract_data.md
+- Goal: learners write their own AI prompt to help answer one clear business question using the project data.
 - Suggested scope:
-  - models/staging/schema.yml
-  - models/marts/schema.yml
-  - tests/
-- Expected artifact:
-  - a named model and a named business rule or risk
-  - at least one schema test addition
-  - one new singular SQL test
-  - short rationale for why the tests matter
-- Fast grading signals:
-  - Pass: stays narrow and targets one real business-rule or grain risk
-  - Pass: uses current project dbt test syntax
-  - Fail: generic recommendations with no runnable YAML or SQL
-
-### Activity 5: Create Analysis
-
-- Example prompt available in ai_prompts/05_create_analysis.md
-- Goal: learners write their own AI prompt to produce a stakeholder-ready query in analyses/.
-- Suggested scope:
-  - analyses/
   - models/marts/
   - models/intermediate/
+  - analyses/
 - Expected artifact:
-  - one new analysis SQL file
-  - explicit business question and output grain
-  - useful ordering/filtering plus short interpretation notes
+  - one clear business question
+  - a practical SQL or transformation approach
+  - a short explanation of what the result would help someone understand
 - Fast grading signals:
-  - Pass: uses ref() to existing modeled data
-  - Pass: result is easy to explain in business terms
-  - Fail: mixed grain or raw-table-first query design
+  - Pass: keeps the scope narrow and focused on one question
+  - Pass: suggests a practical extraction or shaping approach
+  - Fail: generic advice with no clear business focus
+
+### Activity 5: Documentation
+
+- Example prompt available in ai_prompts/05_documentation.md
+- Goal: learners write their own AI prompt to produce clear documentation for one model.
+- Suggested scope:
+  - models/marts/
+  - models/intermediate/
+  - models/staging/
+- Expected artifact:
+  - a short overview of the model
+  - key columns or logic explained clearly
+  - assumptions or caveats included
+  - documentation that would help a new teammate
+- Fast grading signals:
+  - Pass: explains the purpose of the model clearly
+  - Pass: includes useful context such as key fields or assumptions
+  - Fail: generic description with no practical value

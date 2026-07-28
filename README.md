@@ -105,6 +105,13 @@ LIMIT 10;
 3. Ask AI to explain an existing model and test coverage
 4. Ask AI to propose improvements, then implement and re-test
 
+## Documentation Notes
+
+Useful model-level documentation for the order fact model is available in:
+
+- [docs/fct_orders.md](docs/fct_orders.md)
+- [docs/fct_orders_model_notes.md](docs/fct_orders_model_notes.md)
+
 ## AI Prompt Pack
 
 Use the templates in:
@@ -112,8 +119,8 @@ Use the templates in:
 - `ai_prompts/01_create_model.md`
 - `ai_prompts/02_explain_code.md`
 - `ai_prompts/03_suggest_improvements.md`
-- `ai_prompts/04_design_tests.md`
-- `ai_prompts/05_create_analysis.md`
+- `ai_prompts/04_extract_data.md`
+- `ai_prompts/05_documentation.md`
 - `ai_prompts/context_pack.md`
 
 ## Classroom Exercises
@@ -123,13 +130,13 @@ Use these ready-made exercises and answer keys:
 - `course_exercises/01_create_model_exercise.md`
 - `course_exercises/02_explain_code_exercise.md`
 - `course_exercises/03_improve_model_exercise.md`
-- `course_exercises/04_design_tests_exercise.md`
-- `course_exercises/05_create_analysis_exercise.md`
+- `course_exercises/04_extract_data_exercise.md`
+- `course_exercises/05_documentation_exercise.md`
 - `course_exercises/answer_keys/01_create_model_answer.md`
 - `course_exercises/answer_keys/02_explain_code_answer.md`
 - `course_exercises/answer_keys/03_improve_model_answer.md`
-- `course_exercises/answer_keys/04_design_tests_answer.md`
-- `course_exercises/answer_keys/05_create_analysis_answer.md`
+- `course_exercises/answer_keys/04_extract_data_answer.md`
+- `course_exercises/answer_keys/05_documentation_answer.md`
 
 Exercises 4 and 5 are designed as learner-authored prompting tasks so participants must write the AI prompt themselves from the exercise brief.
 

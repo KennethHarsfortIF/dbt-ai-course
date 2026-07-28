@@ -1,72 +1,27 @@
-# Prompt 5: Create Analysis Example Prompts
+# Prompt 5: Ask AI to Write Documentation
 
 These are facilitator examples and reference prompts.
 Learners should write their own prompt using the exercise brief, not copy these by default.
 
-## Example Prompt A: Customer Revenue Mix Analysis
+## Example Prompt A: Model Documentation Prompt
 
 ```text
-You are helping with a dbt project that runs on DuckDB.
+You are helping a teammate understand the model fct_orders in this project.
 
-Create this new analysis file:
-- analyses/customer_revenue_mix.sql
+Task:
+1) Explain what the model is for in plain English.
+2) Describe the most important columns and business meaning.
+3) Point out any assumptions, limitations, or caveats.
+4) Write documentation that could be reused in a README, schema description, or model notes.
 
-Use these models:
-- dim_customers
-- rpt_customer_ltv
-
-Business question:
-- Which customer segments and countries contribute the most completed revenue?
-
-Required output grain:
-- One row per country and segment.
-
-Required columns:
-- country
-- segment
-- customers
-- total_completed_revenue
-- avg_revenue_per_customer
-- high_value_customers
-
-Rules:
-1) Use ref() for all model dependencies.
-2) customers should count distinct customer_id.
-3) high_value_customers should count customers where value_tier = 'high_value'.
-4) Sort by total_completed_revenue descending.
-5) Keep SQL compatible with DuckDB.
-
-Also include a short interpretation section that explains what patterns a stakeholder should look for in the result.
+Important:
+- Keep the scope narrow: one model, one audience, one documentation goal.
+- Do not assume the reader already knows the data model.
+- Be clear and practical.
 
 Return exactly:
-1) Full SQL for analyses/customer_revenue_mix.sql
-2) A short assumptions section
-3) A short interpretation section
+1) A short overview of the model
+2) A bullet list of key columns or logic
+3) A short section on assumptions or caveats
 ```
 
-
-## Expected High-Quality Answer Example (Prompt A)
-
-```text
-SQL:
-- Uses ref('dim_customers') and ref('rpt_customer_ltv').
-- Groups by country and segment.
-- Calculates distinct customers, total_completed_revenue, avg_revenue_per_customer, and high_value_customers.
-- Sorts by total_completed_revenue descending.
-
-Assumptions:
-- country and segment come from the modeled customer layer.
-- completed_revenue is already prepared consistently in the marts layer.
-
-Interpretation:
-- Helps a stakeholder spot which country/segment combinations drive the most revenue and where high-value customer concentration is strongest.
-```
-
-## Common Bad Answer Example (Prompt A)
-
-```text
-- Queries raw_customers or raw_orders directly instead of modeled tables.
-- Returns one row per customer_id instead of country + segment.
-- Omits sorting, assumptions, or interpretation.
-- Mixes total orders with revenue without defining the metric clearly.
-```

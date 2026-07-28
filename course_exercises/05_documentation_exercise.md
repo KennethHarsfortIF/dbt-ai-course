@@ -28,3 +28,4 @@ Keep the scope narrow. One model, one audience, one clear documentation goal.
 1. The prompt is specific and not generic
 2. It focuses on one clear model
 3. It asks for practical documentation, not just a summary
+4. It includes a short explanation of why the documentation would help someone else

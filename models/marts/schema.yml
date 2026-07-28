@@ -14,17 +14,31 @@ models:
               values: ['high_value', 'medium_value', 'low_value']
 
   - name: fct_orders
-    description: "Order-level fact model joined with payment status."
+    description: "Order-level fact model for basic reporting. It combines order details with payment details and adds a simple is_successful_order flag for analysts."
     columns:
       - name: order_id
+        description: "Unique identifier for the order."
         tests:
           - not_null
           - unique
       - name: customer_id
+        description: "Customer associated with the order."
         tests:
           - not_null
+      - name: order_date
+        description: "Date the order was placed."
+      - name: order_status
+        description: "Current status of the order, such as completed."
+      - name: order_amount
+        description: "Monetary value of the order."
+      - name: payment_method
+        description: "Payment method used for the order, when available."
+      - name: payment_status
+        description: "Payment status associated with the order, such as paid."
+      - name: processed_at
+        description: "Timestamp when the payment was processed."
       - name: is_successful_order
-        description: "True when order is completed and payment is paid."
+        description: "True when the order is completed and the payment is marked as paid; otherwise false."
 
   - name: rpt_customer_ltv
     description: "Simple reporting model to discuss CLV/LTV concepts in class."

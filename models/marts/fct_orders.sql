@@ -1,3 +1,6 @@
+-- One row per order/payment combination for lightweight order reporting.
+-- This model is intended for analysts who need a simple fact view of orders,
+-- including payment context and a basic success flag.
 with orders as (
     select * from {{ ref('stg_orders') }}
 ),
