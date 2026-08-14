@@ -2,6 +2,7 @@
 
 This dbt project runs fully local with Python + DuckDB.
 
+
 ## 1. Prerequisites
 
 1. Install Python (3.10 to 3.14 is fine for this repo).
