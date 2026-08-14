@@ -18,6 +18,9 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 ```powershell
 python -m venv .venv
+```
+
+```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
@@ -26,7 +29,10 @@ python -m venv .venv
 ```powershell
 pip install -r requirements.txt
 ```
-
+OR
+```powershell
+uv pip install -r requirements.txt
+```
 ## 3. Run dbt locally
 
 1. Optional: choose DuckDB file path/name for this shell session:
